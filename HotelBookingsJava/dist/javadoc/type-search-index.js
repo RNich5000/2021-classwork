@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"portfoliotask5","l":"HotelBookings"},{"p":"portfoliotask5","l":"HotelRoom"},{"p":"portfoliotask5","l":"Suite"}];updateSearchResults();
