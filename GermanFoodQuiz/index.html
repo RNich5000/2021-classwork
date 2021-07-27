@@ -1,0 +1,176 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Deutsches Essen!</title>
+    
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css">
+<script src="jQuery/jquery-1.11.2.min.js"></script>
+<script src="jQuery/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/objects.js"></script>
+<script src="js/functions.js"></script>
+
+
+<style>
+
+.answers-grid-container
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 10px;
+}
+
+.odd-ans
+{
+    text-align: right;
+    margin: 5px;
+}
+
+.even-ans
+{
+    text-align: left;
+    margin: 5px;
+}
+
+.highscores-grid-container
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 15px;
+}
+
+
+
+</style>
+</head>
+ 
+<body> 
+
+<div data-role="page" id="page" data-theme="a">
+    <div data-role="header">
+        <h1>Deutsches Essen</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+        <ul data-role="listview">
+            <li><a href="#page2">Start Game</a></li>
+            <li><a href="#page3">High Scores</a></li>
+            <li><a href="#page4">User Settings</a></li>
+        </ul>		
+   </div>
+   <div data-role="footer">
+        <h4>Robert Nicholls</h4>
+   </div>
+</div>
+    
+<div data-role="page" id="page2">
+    <div data-role="header" data-add-back-btn="true">
+        <h1>What's the German name for this?</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+        <button id="btnEnterName" onclick="enterName();">Click here to enter your name and start a new game!</button>
+        <button onclick="btnExit();">Go back to the home screen</button>
+        <div style='text-align: right;'>
+            <button data-inline='true' id="btnExit" onclick='btnExit();'>Exit</button>
+        </div>
+        <div style='text-align: center' id="imgFile"></div>
+
+        <div class='answers-grid-container'>
+            <div class='answers odd-ans'><button onclick="selectAns1(this);" id="answer1">Answer 1</button></div>
+            <div class='answers even-ans'><button onclick="selectAns2(this);" id="answer2">Answer 2</button></div>
+            <div class='answers odd-ans'><button onclick="selectAns3(this);" id="answer3">Answer 3</button></div>
+            <div class='answers even-ans'><button onclick="selectAns4(this);" id="answer4">Answer 4</button></div>
+        </div>
+
+        <div style='text-align: center;'>
+            <p id="rightOrWrong"></p>
+        </div>
+
+        <div style='text-align: center; padding-top: 20px;'>
+            <button data-inline="true" id="btnCheckAns" onclick="checkAnswer();">Check Answer</button>
+        </div>
+        <div style='text-align: center;'>
+            <button data-inline="true" id="btnNext" onclick="nextQuestion();">Next Question</button>
+        </div>
+        
+
+
+    </div>
+    <div data-role="footer"> 
+        <h4>Robert Nicholls</h4>    
+    </div>
+</div>
+    
+<div data-role="page" id="page3">
+    <div data-role="header" data-add-back-btn="true">
+         <h1>High Scores</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+
+        <div class="highscores-grid-container">
+            <p style="text-align: right;">1. &nbsp;&nbsp;</p>
+            <p id="score1"></p>
+            <p style="text-align: right;">2. &nbsp;&nbsp;</p>
+            <p id="score2"></p>
+            <p style="text-align: right;">3. &nbsp;&nbsp;</p>
+            <p id="score3"></p>
+            <p style="text-align: right;">4. &nbsp;&nbsp;</p>
+            <p id="score4"></p>
+            <p style="text-align: right;">5. &nbsp;&nbsp;</p>
+            <p id="score5"></p>
+        </div>
+
+        <button onclick="btnExit();">Go back to the home screen</button>
+
+    </div>
+    <div data-role="footer">
+        <h4>Robert Nicholls</h4>
+  	</div>
+</div>
+    
+<div data-role="page" id="page4">
+    <div data-role="header" data-add-back-btn="true">
+          <h1>User Preferences</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+        
+        <div data-role="fieldcontain">
+            <label for="txtBgColor">Background Colour: </label>
+            <input type="color" name="txtBgColor" id="txtBgColor" value="#FFFFFF"/>
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="txtFontColor">Font Colour:</label>
+            <input type="color" name="txtFontColor" id="txtFontColor" />
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="txtFontSize">Font Size:</label>
+            <input type="number" name="txtFontSize" id="txtFontSize" value="16" min="12" max="24" />
+        </div>
+
+        <button data-inline="true" onclick="savePrefs();">Apply Preferences</button>
+
+        <button data-inline="true" onclick="resetHighscores();">Reset High Scores</button>
+
+        <button data-inline="true" onclick="removeUserSettings();">Reset User Preferences</button>
+
+        <button data-inline="true" onclick="clearAllData();">Clear All User Data</button>
+
+        <p id="userDataAns"></p>
+
+        <button onclick="btnExit();">Go back to the home screen</button>
+
+
+    </div>
+    <div data-role="footer">
+        <h4>Robert Nicholls</h4>
+  	</div>
+</div>
+
+</body>
+</html>
