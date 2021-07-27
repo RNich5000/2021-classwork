@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Weather Forecast</title>
+    
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+<script src="jQuery/jquery-1.11.2.min.js"></script>
+<script src="jQuery/jquery.mobile-1.4.5.min.js"></script>
+<script src="functions.js"></script>
+
+<!-- classes have been created for better reusability -->
+<style>
+.sunTime
+{
+    text-align: center;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+
+.city
+{
+    text-align: center;
+    font-weight: bold;
+    color: darkblue;
+}
+
+</style>
+</head>
+ 
+<body> 
+
+<div data-role="page" id="page" data-theme="a">
+    <div data-role="header">
+        <h1>Weather Forecast</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+        <ul data-role="listview">
+            <li><a href="#page2">Weather Forecast (XML)</a></li>
+            <li><a href="#page3">Weather Forecast (JSON)</a></li>
+            <li><a href="#page4">User Preferences</a></li>
+        </ul>		
+   </div>
+   <div data-role="footer">
+        <h4>Robert Nicholls</h4>
+   </div>
+</div>
+    
+<div data-role="page" id="page2">
+    <div data-role="header" data-add-back-btn="true">
+        <h1>Weather Forecast (XML)</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+        
+        <div data-role="fieldcontain">
+			<label for="txtXmlCity">Enter an Australian city:</label>
+			<input type="text" name="txtXmlCity" id="txtXmlCity" value="Melbourne"/>
+        </div>
+
+        <div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>Temperature:</legend>
+				<input type="radio" name="radXmlTemp" id="radXmlTempC" onclick="xmlForecast();" checked="checked" />
+				<label for="radXmlTempC">&deg;C</label>
+				
+				<input type="radio" name="radXmlTemp" onclick="xmlForecast();" id="radXmlTempF" />
+				<label for="radXmlTempF">&deg;F</label>
+
+                <input type="radio" name="radXmlTemp" onclick="xmlForecast();" id="radXmlTempK" />
+				<label for="radXmlTempK">&deg;K</label>
+			</fieldset>
+		</div>
+
+        <button data-inline="true" onclick="xmlForecast();">Get Forecast</button>
+        <section id="xmlResultsSection">
+            <p id="xmlCity" class="city"></p>
+            <p id="xmlSunrise" class="sunTime"></p>
+            <p id="xmlSunset" class="sunTime"></p>
+            <p id="xmlResults"></p>
+        </section>
+        
+
+    </div>
+    <div data-role="footer"> 
+        <h4>Robert Nicholls</h4>    
+    </div>
+</div>
+    
+<div data-role="page" id="page3">
+    <div data-role="header" data-add-back-btn="true">
+         <h1>Weather Forecast (JSON)</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+        
+        <div data-role="fieldcontain">
+			<label for="txtJsonCity">Enter an Australian city:</label>
+			<input type="text" name="txtJsonCity" id="txtJsonCity" value="Melbourne"/>
+        </div>
+
+        <div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>Temperature:</legend>
+				<input type="radio" name="radJsonTemp" id="radJsonTempC" onclick="jsonForecast();" checked="checked" />
+				<label for="radJsonTempC">&deg;C</label>
+				
+				<input type="radio" name="radJsonTemp" id="radJsonTempF" onclick="jsonForecast();" />
+				<label for="radJsonTempF">&deg;F</label>
+
+                <input type="radio" name="radJsonTemp" id="radJsonTempK" onclick="jsonForecast();" />
+				<label for="radJsonTempK">&deg;K</label>
+			</fieldset>
+		</div>
+
+        <button data-inline="true" onclick="jsonForecast();">Get Forecast</button>
+
+        <section id="jsonResultsSection">
+            <p id="jsonCity" class="city"></p>
+            <p id="jsonSunrise" class="sunTime"></p>
+            <p id="jsonSunset" class="sunTime"></p>
+            <p id="jsonResults"></p>
+        </section>
+
+    </div>
+    <div data-role="footer">
+        <h4>Robert Nicholls</h4>
+  	</div>
+</div>
+    
+<div data-role="page" id="page4">
+    <div data-role="header" data-add-back-btn="true">
+          <h1>User Preferences</h1>
+    </div>
+    <!--<div data-role="content">-->
+    <div data-role="main" class="ui-content">	
+        
+        <div data-role="fieldcontain">
+			<label for="txtBackgroundColor">Background colour:</label>
+			<input type="color" name="txtBackgroundColor" id="txtBackgroundColor" value="#FFFFFF" />
+        </div>
+
+        <div data-role="fieldcontain">
+			<label for="txtFontColor">Font colour:</label>
+			<input type="color" name="txtFontColor" id="txtFontColor" />
+        </div>
+
+        <div data-role="fieldcontain">
+			<label for="txtFontSize">Font size:</label>
+			<input type="number" name="txtFontSize" id="txtFontSize" value="16" min="12" max="24" />
+        </div>
+
+        <button data-inline="true" onclick="savePreferences();">Save Preferences</button>
+        <button data-inline="true" onclick="resetPreferences();">Reset Preferences</button>
+
+        <p id="preferencesString"></p>
+
+
+    </div>
+    <div data-role="footer">
+        <h4>Robert Nicholls</h4>
+  	</div>
+</div>
+
+</body>
+</html>
